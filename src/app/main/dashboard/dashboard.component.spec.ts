@@ -29,7 +29,7 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.products-container')?.children.length).toEqual(20);
+    expect(compiled.querySelector('.products-container')?.children.length).toEqual(21);
   });
 
   it('should properly filter products based on search', () => {
@@ -43,7 +43,7 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.products-container')?.children.length).toEqual(19);
+    expect(compiled.querySelector('.products-container')?.children.length).toEqual(20);
   });
 
   it('should filter out all products', () => {
@@ -57,7 +57,7 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.products-container')?.children.length).toEqual(0);
+    expect(compiled.querySelector('.products-container')?.children.length).toEqual(1);
   });
 
   it('should contain only hardware products', () => {
@@ -71,7 +71,7 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.products-container')?.children.length).toEqual(5);
+    expect(compiled.querySelector('.products-container')?.children.length).toEqual(6);
   });
 
   it('should properly sort products', () => {

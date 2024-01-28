@@ -1,48 +1,37 @@
 @import "color-variables";
 
-.thumbnail-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid $default-border-color;
-  height: 200px;
-  border-radius: 8px;
-  text-align: center;
-  margin-bottom: 8px;
-  background-color: $active-bg-color;
-  color: $text-color;
-  cursor: pointer;
+$base-spacing-unit: 24px;
+$half-spacing-unit: $base-spacing-unit / 2;
 
-  .thumbnail-title {
-    font-size: 25px;
-    margin: 0;
-    padding-bottom: 5px;
+$color-alpha: #1772FF;
+$color-form-highlight: #EEEEEE;
+
+.table-row-wrapper {
+  &.is-odd {
+    background:$color-form-highlight;
   }
+}
 
-  .last-update-text {
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
+.thumbnail-column {
+  text-align: left;
+  font-size: 12px;
+  padding: 15px 5px;
+
+  &.product-description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
+}
 
-  .current-temp {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-  }
+:host {
+  width: 100%;
+  display: contents;
+}
 
-  .favorite-btn {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-  }
-
-  .update-info {
-    line-height: 30px;
-  }
-
-  &.extended {
-    height: 250px;
+@media screen and (min-width: 725px) {
+  .thumbnail-column {
+    font-size: 16px;
+    padding: 25px;
   }
 }

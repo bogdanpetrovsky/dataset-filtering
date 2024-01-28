@@ -6,14 +6,21 @@
   color: $text-color;
 
   .products-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-top: 20px;
+    border: 1px solid #d7d7d7;
+    border-radius: 6px;
+    table-layout: fixed;
+    border-spacing: initial;
+    width: 100%;
+  }
 
-    .product-wrapper {
-      width: 100%;
+  .products-table-heading {
+    text-align: left;
+    background: $text-color;
+    color: white;
+    font-size: 12px;
+
+    .table-head-cell {
+      padding: 15px 5px;
     }
   }
 
@@ -33,9 +40,10 @@
   }
 
   @media screen and (min-width: 725px) {
-    .products-container {
-      .product-wrapper {
-        width: calc(33% - 4px);
+    .products-table-heading {
+      font-size: 16px;
+      .table-head-cell {
+        padding: 25px;
       }
     }
   }
