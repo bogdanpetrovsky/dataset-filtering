@@ -1,0 +1,28 @@
+.df-icon-container {
+  font-size: 0;
+
+  &-small {
+    svg {
+      height: 8px;
+      width: 8px;
+    }
+  }
+  &-medium {
+    svg {
+      height: 16px;
+      width: 16px;
+    }
+  }
+  &-large {
+    svg {
+      height: 40px;
+      width: 40px;
+    }
+  }
+}
+
+.inherit-color {
+  & > svg > path {
+    color: inherit;
+  }
+}

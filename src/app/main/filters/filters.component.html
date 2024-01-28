@@ -1,0 +1,36 @@
+<div class="filters-container">
+  <form class="filters-form" [formGroup]="filtersForm">
+    <mat-form-field class="filters-search form-input" appearance="outline">
+      <mat-label>Search</mat-label>
+      <input type="text" matInput formControlName="search"
+             placeholder="Search by name">
+    </mat-form-field>
+    <mat-form-field class="form-input" appearance="outline">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let type of typeFilters" [value]="type">{{type}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="price-sliders-wrapper form-input">
+      <mat-label class="general-label">Price</mat-label>
+      <div>
+        <mat-label>Min.</mat-label>
+        <mat-slider min="0" max="100" color="primary" [value]="minPrice" (change)="sliderChanged('minPrice', $event.value)">
+          <input type="range" value="0" formControlName="minPrice">
+        </mat-slider>
+      </div>
+      <div>
+        <mat-label>Max.</mat-label>
+        <mat-slider min="0" max="100" color="primary" [value]="maxPrice" (change)="sliderChanged('maxPrice', $event.value)">
+          <input type="range" value="100" formControlName="maxPrice">
+        </mat-slider>
+      </div>
+    </div>
+    <mat-form-field class="example-full-width form-input" appearance="outline">
+      <mat-label>Sort</mat-label>
+      <mat-select formControlName="sort">
+        <mat-option *ngFor="let type of sortTypes" [value]="type">{{type}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>

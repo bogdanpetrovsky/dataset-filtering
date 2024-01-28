@@ -1,0 +1,28 @@
+@import "layout-variables";
+@import "color-variables";
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  padding: $offset-md $offset-lg;
+  align-items: center;
+  border-bottom: 1px solid $default-border-color;
+  color: $text-color;
+
+  .header-title-with-logo {
+    display: flex;
+    align-items: center;
+
+    .title {
+      margin: 10px;
+    }
+
+    .logo-img {
+      color: $text-color;
+    }
+  }
+
+  .user-info {
+    font-weight: 600;
+  }
+}

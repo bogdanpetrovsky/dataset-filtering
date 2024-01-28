@@ -1,0 +1,48 @@
+@import "color-variables";
+
+.thumbnail-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $default-border-color;
+  height: 200px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 8px;
+  background-color: $active-bg-color;
+  color: $text-color;
+  cursor: pointer;
+
+  .thumbnail-title {
+    font-size: 25px;
+    margin: 0;
+    padding-bottom: 5px;
+  }
+
+  .last-update-text {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+  }
+
+  .current-temp {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
+
+  .favorite-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+
+  .update-info {
+    line-height: 30px;
+  }
+
+  &.extended {
+    height: 250px;
+  }
+}

@@ -1,0 +1,32 @@
+@import "layout-variables";
+@import "color-variables";
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  padding: $offset-md $offset-lg;
+  align-items: center;
+  border-top: 1px solid $default-border-color;
+  background: $primary-bg-color;
+  color: $text-color;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-height: $footer-height;
+
+  .social-info {
+    .social-list {
+      display: flex;
+      margin: 0;
+      list-style: none;
+    }
+
+    .social-img {
+      color: $text-color;
+    }
+  }
+
+  .title {
+    margin: 5px;
+  }
+}

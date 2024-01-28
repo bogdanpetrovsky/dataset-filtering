@@ -1,0 +1,43 @@
+@import 'color-variables';
+
+.filters-form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .form-input {
+    width: 100%;
+  }
+
+  .price-sliders-wrapper {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    position: relative;
+    height: 61px;
+    border: 1px solid #d7d7d7;
+    margin-top: 2px;
+    color: #626262;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    padding: 0 5px;
+
+    .general-label {
+      position: absolute;
+      left: 10px;
+      top: -5px;
+      font-size: 12px;
+      padding: 0 5px;
+      background: $primary-bg-color;
+    }
+  }
+
+  @media screen and (min-width: 725px) {
+    .form-input {
+      width: unset;
+    }
+    .filters-search {
+      width: 35%;
+    }
+  }
+}
