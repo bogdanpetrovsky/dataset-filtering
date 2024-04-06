@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from '../../../data-models/DatasetGenerator';
-import { ProductService } from '../services/product.service';
-import {
-  FilteringHelper,
-  IFilterForm,
-  IValidatedFilters
-} from '../../../data-models/FilteringHelpers';
+import { IUser } from '../../../data-models/DatasetGenerator';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'df-dashboard',
@@ -13,52 +8,59 @@ import {
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  appliedFilters: IValidatedFilters = {
-    sort: {
-      sortBy: 'id',
-      sortDirection: 'asc'
-    },
-    filters: {
-      search: '',
-      filterMap: {}
-    },
-    pagination: {
-      page: 1,
-      size: 20
-    }
-  };
-  products: IProduct[];
-  total: number;
-  constructor(private productService: ProductService) {
+  users: IUser[];
+  showForm: boolean;
+  selectedUser: IUser;
+  creationErrors: string[];
+  creationSuccess: boolean;
+  constructor(private productService: UserService) {
   }
   ngOnInit(): void {
-    this.getProducts();
+    this.users = this.productService.getAll();
+    this.productService.userCreationError.subscribe((errors) => {
+      this.creationErrors = errors;
+      setTimeout(() => {
+        this.creationErrors = [];
+      }, 3000);
+    });
+    this.productService.userCreationSuccess.subscribe(() => {
+      this.creationSuccess = true;
+      setTimeout(() => {
+        this.creationSuccess = false;
+      }, 3000);
+    });
+
   }
 
-  idTrackBy(index, product: IProduct) {
+  idTrackBy(index, product: IUser) {
     return product.id;
   }
 
-  getProducts() {
-    const { products, total } = this.productService.getProducts(this.appliedFilters);
-    this.products = products;
-    this.total = total;
+  saveUser(user: IUser) {
+    if (!user) {
+      this.showForm = false;
+      return;
+    }
+
+    user.id ? this.productService.updateUser(user.id, user) : this.productService.createUser(user);
+    this.showForm = false;
   }
 
-  getMoreProducts() {
-    const newProducts = this.productService.getProducts(this.appliedFilters).products;
-    this.products = [...this.products, ...newProducts];
+  selectUser(user: IUser) {
+    this.showForm = false;
+    this.selectedUser = user;
+    this.showForm = true;
   }
 
-  onScroll() {
-    this.appliedFilters.pagination.page++;
-    this.getMoreProducts();
+  deleteUser($event: IUser) {
+    this.productService.deleteUser($event.id);
+    this.showForm = false;
   }
 
-  getFilteredProducts($event: IFilterForm) {
-    this.appliedFilters = FilteringHelper.getAppliedFilters($event, { page: 1, size: 20 });
-    const { products, total } = this.productService.getProducts(this.appliedFilters);
-    this.products = products;
-    this.total = total;
+  onCreateUserClicked() {
+    this.showForm = true;
+    setTimeout(() => {
+      scrollTo(0, document.body.scrollHeight);
+    }, 500);
   }
 }

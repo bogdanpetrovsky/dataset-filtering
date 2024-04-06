@@ -1,0 +1,25 @@
+<div class="user-form-container">
+  <div class="user-form-header">
+    <span class="user-form-title">{{user ? user.firstName +  ' ' + user.lastName : 'Create new user'}}</span>
+    <strong class="close-icon" (click)="close()">X</strong>
+  </div>
+  <div class="user-form-content" [formGroup]="userForm">
+    <label for="username">Username</label><input id="username" class="primary-input" type="text" formControlName="username" required>
+    <label for="firstName">Firstname</label><input id="firstName" class="primary-input" type="text" formControlName="firstName" required>
+    <label for="lastName">Last name</label><input id="lastName" class="primary-input" type="text" formControlName="lastName" required>
+    <label for="email">Email</label><input id="email" class="primary-input" type="text" formControlName="email" required>
+    <label for="type">Type</label>
+    <select id="type" class="primary-input primary-select" formControlName="type" required>
+      <option value="Admin">Admin</option>
+      <option value="Driver">Driver</option>
+    </select>
+    <label for="password">Password</label><input id="password" class="primary-input" type="text" formControlName="password" required>
+    <label for="repeatPassword">Repeat Password</label><input id="repeatPassword" class="primary-input" type="text" formControlName="repeatPassword" required>
+    <div class="validation-errors" *ngIf="userForm" dfFormValidationErrors [group]="userForm">
+    </div>
+  </div>
+  <div class="user-form-actions" [ngClass]="{'multiple-actions': user}">
+    <button class="delete-user secondary-btn" *ngIf="user" (click)="deleteUser()">Delete</button>
+    <button class="create-user primary-btn" (click)="createUser()">{{user ? 'Update' : 'Create'}} User</button>
+  </div>
+</div>
