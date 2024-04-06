@@ -8,7 +8,6 @@
     <mat-form-field class="form-input" appearance="outline">
       <mat-label>Category</mat-label>
       <mat-select formControlName="type">
-        <mat-option *ngFor="let type of typeFilters" [value]="type">{{type}}</mat-option>
       </mat-select>
     </mat-form-field>
     <div class="price-sliders-wrapper form-input">
@@ -29,7 +28,6 @@
     <mat-form-field class="example-full-width form-input" appearance="outline">
       <mat-label>Sort</mat-label>
       <mat-select formControlName="sort">
-        <mat-option *ngFor="let type of sortTypes" [value]="type">{{type}}</mat-option>
       </mat-select>
     </mat-form-field>
   </form>

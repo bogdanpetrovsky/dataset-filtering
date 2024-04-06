@@ -2,21 +2,35 @@
 @import "color-variables";
 
 .dashboard-container {
-  margin: $offset-lg;
+  margin: $offset-sm;
   color: $text-color;
+  padding-bottom: 100px;
 
-  .products-container {
+  .users-container {
     border: 1px solid #d7d7d7;
-    border-radius: 6px;
+    border-radius: 12px;
+    border-spacing: 0 5px;
+    background: $default-bg-color;
     table-layout: fixed;
-    border-spacing: initial;
+    margin-bottom: 20px;
     width: 100%;
   }
 
-  .products-table-heading {
+  .user-actions {
+    margin: 10px 0;
+    display: flex;
+    justify-content: end;
+  }
+
+  .users-table-head {
+    background: $default-bg-color;
+  }
+
+  .users-table-heading {
     text-align: left;
-    background: $text-color;
-    color: white;
+    background: $default-bg-color;
+    border-radius: 12px;
+    color: grey;
     font-size: 12px;
 
     .table-head-cell {
@@ -39,11 +53,66 @@
     font-size: 20px;
   }
 
+  .creation-success, .creation-errors {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 12px;
+    position: absolute;
+    top: 25px;
+    color: white;
+  }
+
+  .creation-success {
+    background: green;
+    right: 25px;
+  }
+
+  .creation-errors {
+    background: red;
+    left: 25px;
+  }
+
   @media screen and (min-width: 725px) {
-    .products-table-heading {
+    margin: $offset-lg;
+
+    .users-table-heading {
       font-size: 16px;
+      background: $default-bg-color;
+      border-radius: 12px;
       .table-head-cell {
         padding: 25px;
+        border-radius: 12px;
+      }
+    }
+
+    .user-table-wrapper {
+      max-height: 800px;
+      overflow: auto;
+      width: 100%;
+    }
+
+    .dashboard-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      .user-form-wrapper {
+        display: none;
+      }
+
+      &.shrinked {
+        .user-table-wrapper {
+          width: 66%;
+        }
+
+        .user-form-wrapper {
+          display: block;
+          width: 33%;
+        }
+      }
+
+      .users-container {
+        width: 100%;
       }
     }
   }

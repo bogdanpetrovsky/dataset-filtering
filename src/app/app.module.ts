@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
-import { ProductService } from './main/services/product.service';
+import { UserService } from './main/services/user.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { ProductService } from './main/services/product.service';
     AppRoutingModule,
     LayoutModule
   ],
-  providers: [ProductService],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

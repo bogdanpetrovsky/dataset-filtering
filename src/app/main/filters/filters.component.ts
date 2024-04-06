@@ -1,6 +1,5 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IFilterForm, PRODUCT_TYPE, SORT_TYPE } from '../../../data-models/FilteringHelpers';
 import { debounceTime, distinctUntilChanged, Subscription } from 'rxjs';
 
 @Component({
@@ -9,8 +8,6 @@ import { debounceTime, distinctUntilChanged, Subscription } from 'rxjs';
   styleUrls: ['./filters.component.scss']
 })
 export class FiltersComponent implements OnInit, OnDestroy {
-  typeFilters: PRODUCT_TYPE[] = ['Any', 'Electronic', 'Hardware', 'Household'];
-  sortTypes: SORT_TYPE[] = ['Default', 'Highest Price', 'Lowest Price'];
   filtersForm = new FormGroup({
     search: new FormControl('', []),
     minPrice: new FormControl(0, [Validators.min(0)]),
@@ -21,8 +18,6 @@ export class FiltersComponent implements OnInit, OnDestroy {
   formSubscription: Subscription;
   minPrice = 0;
   maxPrice = 100;
-
-  @Output() filtersUpdated = new EventEmitter<IFilterForm>();
   constructor() { }
 
   ngOnInit(): void {
@@ -30,7 +25,6 @@ export class FiltersComponent implements OnInit, OnDestroy {
       debounceTime(500),
       distinctUntilChanged()
     ).subscribe(() => {
-      this.emitFilterUpdate();
     });
   }
 
@@ -49,9 +43,5 @@ export class FiltersComponent implements OnInit, OnDestroy {
     }
 
     this.filtersForm.controls[slider].patchValue($event);
-  }
-
-  emitFilterUpdate() {
-    this.filtersUpdated.emit(this.filtersForm.value);
   }
 }
